@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ["linux"]
+    steps:
+      - name: Install Elixir
+        shell: bash
+        run: |
+          curl -s https://elixir-lang.org/install.sh -o $RUNNER_TEMP/install.sh
+          sh $RUNNER_TEMP/install.sh elixir@1.20.4 otp@28.4
+          installs_dir=$HOME/.elixir-install/installs
+          echo "$installs_dir/otp/28.4/bin" >> $GITHUB_PATH
+          echo "$installs_dir/elixir/1.20.4-otp-28/bin" >> $GITHUB_PATH
+
+      - name: Checkout repo
+        uses: actions/checkout@v7
+        
+      - name: Run build and tests
+        run: |
+          mix deps.get
+          mix compile
+          mix test
