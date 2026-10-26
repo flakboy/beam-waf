@@ -22,7 +22,7 @@ defmodule BeamWaf.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:bandit, "~> 1.8"}
+      {:cowboy, "~> 2.8"}
     ]
   end
 end
