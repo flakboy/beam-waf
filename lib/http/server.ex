@@ -7,10 +7,10 @@ defmodule Http.Server do
     transport_opts = [{:port, port}]
 
     middlewares = [
+      Middleware.Logging.Logging,
       Middleware.Metrics.Metrics,
-
       # note: the below entries must always be included
-      # unless you provide your own code handling the requests
+      # unless you provide your own code for final handling stages
       :cowboy_router,
       :cowboy_handler
     ]

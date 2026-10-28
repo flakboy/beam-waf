@@ -9,6 +9,6 @@ defmodule Middleware.Metrics.Metrics do
   end
 
   defp increase_total() do
-    WAF.MetricsAgent.add("total_metrics", 1)
+    Metrics.Agent.add("total_requests", 1)
   end
 end

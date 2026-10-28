@@ -8,7 +8,7 @@ defmodule WAF.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {WAF.MetricsAgent, []},
+      {Metrics.Agent, []},
       {Task, fn -> Http.Server.start(8080) end}
     ]
 

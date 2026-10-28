@@ -1,7 +1,11 @@
 defmodule Http.Router do
   def routes do
     [
-      {:_, [{"/", Waf.Validation, []}]}
+      {:_,
+       [
+         {"/metrics", Metrics.Handler, []},
+         {"/", Validation.Handler, []}
+       ]}
     ]
   end
 end

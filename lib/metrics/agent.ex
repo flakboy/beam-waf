@@ -1,4 +1,4 @@
-defmodule WAF.MetricsAgent do
+defmodule Metrics.Agent do
   use Agent
 
   def start_link(_opts) do
